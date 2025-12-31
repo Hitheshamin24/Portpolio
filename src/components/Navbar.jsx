@@ -4,28 +4,33 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   {
     name: "About",
-    href: "/about",
+    href: "#about",
   },
   {
     name: "Skills",
-    href: "/skills",
+    href: "#skills",
   },
   {
     name: "Projects",
-    href: "/projects",
+    href: "#projects",
   },
   {
     name: "Contact",
-    href: "/contact",
+    href: "#contact",
   },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="fixed top-0 left-0 z-50 flex justify-between items-center h-16 w-full bg-[#070a13]/95 backdrop-blur-lg text-white py-3 md:px-28 px-6">
+    <div className="fixed top-0 left-0 z-50 flex justify-between items-center h-16 w-full bg-[#070a13]/90 backdrop-blur-lg text-white py-3 md:px-28 px-6">
       {/* logo container */}
-      <div className=" h-full w-10">
+      <div className=" h-full w-10 cursor-pointer"onClick={()=>{
+       window.scrollTo({
+        top:0,
+        behavior:"smooth",
+       }) 
+      }}>
         <img
           className="h-full w-full object-cover"
           src={image}
@@ -41,6 +46,12 @@ const Navbar = () => {
               <li key={link.name}>
                 <a
                   href={link.href}
+                  onClick={(e)=>{
+                    e.preventDefault();
+                    document.querySelector(link.href)?.scrollIntoView({
+                      behavior:"smooth",
+                    })
+                  }}
                   className="transition-colors duration-300 hover:text-[#20c9e0] hover:drop-shadow-[0_0_6px_#20c9e0]"
                 >
                   {link.name}
@@ -59,7 +70,7 @@ const Navbar = () => {
 
       {/* mobile menu overlay */}
       {isOpen && (
-        <div className="fixed top-20 left-0 w-full  bg-[#070a13]/95 backdrop-blur-lg items-start justify-center   z-50 flex flex-col gap-6 py-10 md:hidden border-t border-gray-800 px-6">
+        <div className="fixed top-17 left-0 w-full  bg-[#070a13]/95 backdrop-blur-lg items-start justify-center   z-50 flex flex-col gap-6 py-10 md:hidden border-t border-gray-800 px-6">
           {navLinks.map((link) => {
             return (
               <a
