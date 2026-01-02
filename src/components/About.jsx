@@ -19,17 +19,19 @@ const About = () => {
     },
   ];
 
+ 
+
   return (
     <div
-      className="text-white min-h-screen py-10 px-25 scroll-mt-15 "
+      className="text-white min-h-screen py-10 px-25 scroll-mt-14 "
       id="about"
     >
-      <div className="flex gap-2 items-center ml-5">
-        <span className="text-[#23ddf6] ">0.1</span>
-        <h1 className="text-3xl font-medium ">About me</h1>
+      <div className=" flex gap-2 items-center ml-5">
+        <span className="text-[#23ddf6] text-2xl">01.</span>
+        <h1 className="ml-3 text-5xl font-medium ">About me</h1>
       </div>
       <div className="flex flex-col md:flex-row">
-        <div className=" md:w-1/2 p-3 flex flex-col gap-5 text-md">
+        <div className=" md:w-1/2 p-3 flex flex-col gap-5 text-md text-gray-300">
           <p className=" p-2 rounded-lg ">
             Hi! I'm <span className="text-[#23ddf6]">Hithesh</span>, a
             passionate student diving deep into the world of web development. My
@@ -53,7 +55,8 @@ const About = () => {
             return (
               <div
                 key={index}
-                className="group flex items-center gap-4 bg-[#0b111e] px-3 py-5 rounded-xl border border-transparent hover:border-[#23ddf6] hover:drop-shadow-2xl hover:scale-103 transition-all duration-200 ease-in-out cursor-pointer"
+                className="group flex items-center gap-4 bg-[#0b111e] px-3 py-5 rounded-xl border border-transparent  hover:border-[#23ddf6]/70   hover:shadow-[0_0_20px_rgba(35,221,246,0.15)] hover:scale-103 transition-all duration-300 ease-in-out"
+            
               >
                 <div className=" bg-[#23ddf6]/10 group-hover:bg-[#23ddf6] group-hover:text-[#070a13] p-2 rounded-md transition-all duration-200 ease-in-out text-">
                   <item.icon />
