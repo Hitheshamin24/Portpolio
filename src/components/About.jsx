@@ -23,11 +23,11 @@ const About = () => {
 
   return (
     <div
-      className="text-white min-h-screen py-10 px-25 scroll-mt-14 "
+      className="text-white min-h-screen py-10 px-6 max-w-6xl mx-auto scroll-mt-14 "
       id="about"
     >
       <div className=" flex gap-2 items-center ml-5">
-        <span className="text-[#23ddf6] text-2xl">01.</span>
+        <span className="text-cyan-400  font-mono">01.</span>
         <h1 className="ml-3 text-5xl font-medium ">About me</h1>
       </div>
       <div className="flex flex-col md:flex-row">

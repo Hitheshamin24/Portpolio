@@ -44,11 +44,11 @@ const About = () => {
 
   return (
     <div
-      className="text-white min-h-screen py-10 px-25 scroll-mt-16 "
+      className="text-white min-h-screen py-10 px-6 max-w-6xl mx-auto scroll-mt-16 "
       id="skills"
     >
       <div className="flex gap-2 items-center ml-5">
-        <span className="text-[#23ddf6] text-2xl">02.</span>
+        <span className="text-cyan-400 font-mono">02.</span>
         <h1 className=" ml-3 text-5xl font-medium ">Skills & Technologies</h1>
       </div>
       <div className="px-10 mt-14 grid grid-cols-1 md:grid-cols-2 gap-5  w-full">
