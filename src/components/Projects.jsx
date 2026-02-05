@@ -1,45 +1,70 @@
-import { Github, ExternalLink, Folder } from "lucide-react";
-import dncr from "../assets/dncr.png";
-const projects = [
-  {
-    title: "DNCR-Dance Studio Management ",
-    description:
-      "A complete management system for dance studios to handle student registrations, batch scheduling, fee tracking, instructor management, and attendance. Designed to streamline studio operations and improve administrative efficiency.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-    github: "#",
-    live: "#",
-    img: dncr,
-    featured: true,
-  },
-  {
-    title: "Paisafy – Personalized Investment Recommendation System",
-    description:
-      "An intelligent investment recommendation system that analyzes user profiles, risk appetite, and financial goals to suggest personalized investment options using data-driven logic.",
-    tech: ["Python", "Machine Learning", "Flask", "Pandas"],
-    github: "#",
-    live: "#",
-    img: "#",
-    featured: true,
-  },
-  {
-    title: "Weather Dashboard",
-    description: "Real-time weather application using OpenWeather API.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    live: "#",
-    img: dncr,
-    featured: false,
-  },
-  {
-    title: "Quiz Application",
-    description: "Interactive quiz app with timer and score tracking.",
-    tech: ["React", "Tailwind"],
-    github: "#",
-    live: "#",
-    img: dncr,
-    featured: false,
-  },
-];
+import {
+  Github,
+  ExternalLink,
+  Folder,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { projects } from "./projectsData";
+import { useState } from "react";
+
+const ProjectSlider = ({ images, title }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (!images || images.length === 0)
+    return <div className="bg-zinc-800 w-full h-full" />;
+
+  const prevSlide = (e) => {
+    e.preventDefault();
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+  const nextSlide = (e) => {
+    e.preventDefault();
+    const isLastSlide = currentIndex === images.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+  return (
+    <div className=" relative w-full h-full group:">
+      <img
+        src={images[currentIndex]}
+        alt={`${title} slide ${currentIndex + 1}`}
+        className="w-full h-full transition-transform duration-500"
+      />
+      {/* {navigation only showing if more than 1 image} */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prevSlide}
+            className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full group-hover:opacity-100 transition-opacity hover:bg-cyan-500 "
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-cyan-500"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+            {images.map((_, slideIndex) => {
+              return (
+                <div
+                  key={slideIndex}
+                  onClick={() => setCurrentIndex(slideIndex)}
+                  className={`w-1.5 h-1.5 rounded-full  cursor-pointer ${currentIndex === slideIndex ? "bg-cyan-400 " : "bg-white/50"}`}
+                />
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const Projects = () => {
   const featured = projects.filter((p) => p.featured);
@@ -60,47 +85,29 @@ const Projects = () => {
           {featured.map((project, index) => (
             <div
               key={project.title}
-              className={`relative grid md:grid-cols-12 gap-6 items-center ${
-                index % 2 !== 0 ? "md:text-right" : ""
-              }`}
+              className="grid md:grid-cols-12 gap-8 items-center "
             >
               {/* Image */}
               <div
-                className={`md:col-span-7 ${
-                  index % 2 !== 0 ? "md:col-start-6" : ""
+                className={`md:col-span-6 w-full  ${
+                  index % 2 !== 0 ? "md:order-2" : "md:order-1"
                 }`}
               >
                 <div
                   className="relative aspect-video rounded-xl overflow-hidden
                 border border-zinc-800 group
-                hover:shadow-xl hover:shadow-cyan-500/30 transition"
+                hover:shadow-xl hover:shadow-cyan-500/30  transition"
                 >
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full 
-               group-hover:scale-105 transition-transform duration-500"
-                  />
-
-                  {/* Overlay */}
-                  <div
-                    className="absolute inset-0 bg-black/40
-                  opacity-0 group-hover:opacity-100
-                  transition-opacity flex items-center justify-center"
-                  >
-                    <span className="text-cyan-400 font-mono text-sm">
-                      View Project
-                    </span>
-                  </div>
+                 <ProjectSlider images={project.imgs} title={project.title} />
                 </div>
               </div>
 
               {/* Content */}
               <div
-                className={`md:col-span-6 md:absolute ${
+                className={`md:col-span-6 flex flex-col justify-center ${
                   index % 2 !== 0
-                    ? "md:left-0 md:text-left"
-                    : "md:right-0 md:text-right"
+                    ? "md:order-1  md:text-left"
+                    : "md:order-2 md:text-right"
                 }`}
               >
                 <p className="text-cyan-400 font-mono text-sm mb-2">
@@ -108,11 +115,11 @@ const Projects = () => {
                 </p>
 
                 <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-
                 <div
-                  className="bg-zinc-900/80 backdrop-blur-lg
+                  className={`bg-zinc-900/80 backdrop-blur-lg
                              border border-zinc-800
-                             rounded-xl p-6 shadow-lg"
+                             rounded-xl p-6 shadow-lg mb-4
+                               w-full ${index % 2 == 0 ? `ml-auto` : `mr-auto`}`}
                 >
                   <p className="text-zinc-400">{project.description}</p>
                 </div>
@@ -163,12 +170,7 @@ const Projects = () => {
                 border border-zinc-800 group
                 hover:shadow-xl hover:shadow-cyan-500/30 transition"
               >
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full h-full object-fit bg-black/20
-             group-hover:scale-105 transition-transform duration-500"
-                />
+                <ProjectSlider images={project.imgs} title={project.title} />
               </div>
 
               <div className="flex justify-between items-center mb-6">
