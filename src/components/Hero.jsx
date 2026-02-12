@@ -29,10 +29,24 @@ const Hero = () => {
         web experiences. Learning, building, and growing one project at a time.
       </div>
       <div className="flex gap-4 mt-6 ">
-        <button className="px-7 py-3 bg-[#23ddf6] hover:bg-[#1db8cc] rounded-lg hover:scale-102 transition-all duration-200 ease-in-out text-black font-semibold  shadow-[0_0_30px_rgba(35,221,246,0.45)] text-sm z-10">
+        <button
+          onClick={() => {
+            document
+              .getElementById("projects")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="px-7 py-3 bg-[#23ddf6] hover:bg-[#1db8cc] rounded-lg hover:scale-102 transition-all duration-200 ease-in-out text-black font-semibold  shadow-[0_0_30px_rgba(35,221,246,0.45)] text-sm z-10 cursor-pointer"
+        >
           View My Work
         </button>
-        <button className="px-7 py-3  bg-transparent hover:bg-[#23ddf6]/10 hover:scale-102 transition-all duration-200 ease-in-out  rounded-lg  border border-[#23ddf6]/10 text-sm font-medium z-10">
+        <button
+          onClick={() => {
+            document
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="px-7 py-3  bg-transparent hover:bg-[#23ddf6]/10 hover:scale-102 transition-all duration-200 ease-in-out  rounded-lg  border border-[#23ddf6]/10 text-sm font-medium z-10 cursor-pointer"
+        >
           Get In Touch
         </button>
       </div>
@@ -46,7 +60,11 @@ const Hero = () => {
           <Github className="w-6 h-6 text-gray-300 hover:text-cyan-400 transition" />
         </a>
 
-        <a href="https://www.linkedin.com/in/hitheshamin/" target="_blank">
+        <a
+          href="https://www.linkedin.com/in/hitheshamin/ "
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Linkedin className="w-6 h-6 text-gray-300 hover:text-cyan-400 transition" />
         </a>
         <a

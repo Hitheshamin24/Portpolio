@@ -25,12 +25,15 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 z-50 flex justify-between items-center h-16 w-full bg-[#070a13]/90 backdrop-blur-lg text-white py-3 md:px-28 px-6">
       {/* logo container */}
-      <div className=" h-full w-10 cursor-pointer"onClick={()=>{
-       window.scrollTo({
-        top:0,
-        behavior:"smooth",
-       }) 
-      }}>
+      <div
+        className=" h-full w-10 cursor-pointer"
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
+      >
         <img
           className="h-full w-full object-cover"
           src={image}
@@ -38,19 +41,21 @@ const Navbar = () => {
         />
       </div>
       {/* navigation links */}
-      <div className="hidden md:flex items-center gap-10 
-       text-sm text-gray-400 tracking-wide">
+      <div
+        className="hidden md:flex items-center gap-10 
+       text-sm text-gray-400 tracking-wide"
+      >
         <ul className="flex gap-6">
           {navLinks.map((link) => {
             return (
               <li key={link.name}>
                 <a
                   href={link.href}
-                  onClick={(e)=>{
+                  onClick={(e) => {
                     e.preventDefault();
                     document.querySelector(link.href)?.scrollIntoView({
-                      behavior:"smooth",
-                    })
+                      behavior: "smooth",
+                    });
                   }}
                   className="transition-colors duration-300 hover:text-[#20c9e0] hover:drop-shadow-[0_0_6px_#20c9e0]"
                 >
@@ -60,11 +65,21 @@ const Navbar = () => {
             );
           })}
         </ul>
-        <button className="bg-linear-to-r from-cyan-400 to-blue-500  rounded-lg text-black shadow-lg shadow-cyan-500/30 px-5 py-2 hover:scale-105 transition-transform duration-200 ease-in-out">
+        <button
+          onClick={() => {
+            document
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="bg-linear-to-r from-cyan-400 to-blue-500  rounded-lg text-black shadow-lg shadow-cyan-500/30 px-5 py-2 hover:scale-105 transition-transform duration-200 ease-in-out cursor-pointer"
+        >
           Lets Talk
         </button>
       </div>
-      <button className="md:hidden hover:scale-115 transition-transform ease-in-out duration-200 outline-none" onClick={() => setIsOpen(!isOpen)}>
+      <button
+        className="md:hidden hover:scale-115 transition-transform ease-in-out duration-200 outline-none"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         {isOpen ? <X /> : <Menu />}
       </button>
 
@@ -83,9 +98,9 @@ const Navbar = () => {
               </a>
             );
           })}
-        <button className="bg-linear-to-r from-cyan-400 to-blue-500  rounded-lg text-black shadow-lg shadow-cyan-500/30 px-5 py-1.25 hover:scale-105 transition-transform duration-200 ease-in-out w-full">
-          Lets Talk
-        </button>
+          <button className="bg-linear-to-r from-cyan-400 to-blue-500  rounded-lg text-black shadow-lg shadow-cyan-500/30 px-5 py-1.25 hover:scale-105 transition-transform duration-200 ease-in-out w-full">
+            Lets Talk
+          </button>
         </div>
       )}
     </div>
