@@ -12,7 +12,7 @@ const ProjectSlider = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (!images || images.length === 0) return;
+    if (!images || images.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
@@ -20,63 +20,67 @@ const ProjectSlider = ({ images, title }) => {
       );
     }, 3000);
     return () => clearInterval(interval);
-  }, [images]);
+  }, [currentIndex, images]);
   if (!images || images.length === 0)
     return <div className="bg-zinc-800 w-full h-full" />;
-  const prevSlide = (e) => {
-    e.preventDefault();
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  const handleManualChange = (index) => {
+    setCurrentIndex(index);
   };
-  const nextSlide = (e) => {
-    e.preventDefault();
-    const isLastSlide = currentIndex === images.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
+
   return (
     <div className=" relative w-full h-full group">
       <div className="overflow-hidden w-full h-full">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="flex transition-transform duration-700 ease-in-out aspect-video"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {images.map((img, index) => {
-            return (
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className="w-full h-full shrink-0 flex items-center justify-center bg-zinc-950"
+            >
               <img
-                key={index}
                 src={img}
                 alt={`${title} slide ${index + 1}`}
-                className="w-full h-full object-cover shrink-0"
+                className="max-h-full max-w-full object-contain"
               />
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
       {/* {navigation only showing if more than 1 image} */}
       {images.length > 1 && (
         <>
           <button
-            onClick={prevSlide}
+            onClick={(e) => {
+              e.preventDefault();
+              handleManualChange(
+                currentIndex === 0 ? images.length - 1 : currentIndex - 1,
+              );
+            }}
             className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full group-hover:opacity-100 transition-opacity hover:bg-cyan-500 "
           >
             <ChevronLeft size={20} />
           </button>
           <button
-            onClick={nextSlide}
+            onClick={(e) => {
+              e.preventDefault();
+              handleManualChange(
+                currentIndex === images.length - 1 ? 0 : currentIndex + 1,
+              );
+            }}
             className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-cyan-500"
           >
             <ChevronRight size={20} />
           </button>
-
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+          {/* indicators */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {images.map((_, slideIndex) => {
               return (
                 <div
                   key={slideIndex}
-                  onClick={() => setCurrentIndex(slideIndex)}
-                  className={`w-1.5 h-1.5 rounded-full  cursor-pointer ${currentIndex === slideIndex ? "bg-cyan-400 " : "bg-white/50"}`}
+                  onClick={() => handleManualChange(slideIndex)}
+                  className={`w-2 h-2 rounded-full  cursor-pointer transition-all ${currentIndex === slideIndex ? "bg-cyan-400 " : "bg-white/10  hover:bg-white"}`}
                 />
               );
             })}
@@ -160,10 +164,10 @@ const Projects = () => {
                     index % 2 !== 0 ? "justify-start" : "justify-end"
                   }`}
                 >
-                  <a href={project.github} className="hover:text-cyan-400">
+                  <a href={project.github} target="blank" className="hover:text-cyan-400">
                     <Github size={20} />
                   </a>
-                  <a href={project.live} className="hover:text-cyan-400">
+                  <a href={project.live} target="blank" className="hover:text-cyan-400">
                     <ExternalLink size={20} />
                   </a>
                 </div>
