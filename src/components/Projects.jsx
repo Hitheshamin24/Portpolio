@@ -6,14 +6,23 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { projects } from "./projectsData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProjectSlider = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+      );
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images]);
   if (!images || images.length === 0)
     return <div className="bg-zinc-800 w-full h-full" />;
-
   const prevSlide = (e) => {
     e.preventDefault();
     const isFirstSlide = currentIndex === 0;
@@ -27,12 +36,24 @@ const ProjectSlider = ({ images, title }) => {
     setCurrentIndex(newIndex);
   };
   return (
-    <div className=" relative w-full h-full group:">
-      <img
-        src={images[currentIndex]}
-        alt={`${title} slide ${currentIndex + 1}`}
-        className="w-full h-full transition-transform duration-500"
-      />
+    <div className=" relative w-full h-full group">
+      <div className="overflow-hidden w-full h-full">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {images.map((img, index) => {
+            return (
+              <img
+                key={index}
+                src={img}
+                alt={`${title} slide ${index + 1}`}
+                className="w-full h-full object-cover shrink-0"
+              />
+            );
+          })}
+        </div>
+      </div>
       {/* {navigation only showing if more than 1 image} */}
       {images.length > 1 && (
         <>
@@ -98,7 +119,7 @@ const Projects = () => {
                 border border-zinc-800 group
                 hover:shadow-xl hover:shadow-cyan-500/30  transition"
                 >
-                 <ProjectSlider images={project.imgs} title={project.title} />
+                  <ProjectSlider images={project.imgs} title={project.title} />
                 </div>
               </div>
 
