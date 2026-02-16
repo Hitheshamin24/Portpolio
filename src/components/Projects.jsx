@@ -21,8 +21,10 @@ const ProjectSlider = ({ images, title }) => {
     }, 3000);
     return () => clearInterval(interval);
   }, [currentIndex, images]);
+
   if (!images || images.length === 0)
     return <div className="bg-zinc-800 w-full h-full" />;
+
   const handleManualChange = (index) => {
     setCurrentIndex(index);
   };
@@ -48,7 +50,7 @@ const ProjectSlider = ({ images, title }) => {
           ))}
         </div>
       </div>
-      {/* {navigation only showing if more than 1 image} */}
+      
       {images.length > 1 && (
         <>
           <button
@@ -58,7 +60,7 @@ const ProjectSlider = ({ images, title }) => {
                 currentIndex === 0 ? images.length - 1 : currentIndex - 1,
               );
             }}
-            className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full group-hover:opacity-100 transition-opacity hover:bg-cyan-500 "
+            className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-cyan-500 "
           >
             <ChevronLeft size={20} />
           </button>
@@ -73,14 +75,15 @@ const ProjectSlider = ({ images, title }) => {
           >
             <ChevronRight size={20} />
           </button>
-          {/* indicators */}
+          
+          {/* Indicators */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {images.map((_, slideIndex) => {
               return (
                 <div
                   key={slideIndex}
                   onClick={() => handleManualChange(slideIndex)}
-                  className={`w-2 h-2 rounded-full  cursor-pointer transition-all ${currentIndex === slideIndex ? "bg-cyan-400 " : "bg-white/10  hover:bg-white"}`}
+                  className={`w-2 h-2 rounded-full cursor-pointer transition-all ${currentIndex === slideIndex ? "bg-cyan-400 " : "bg-white/10 hover:bg-white"}`}
                 />
               );
             })}
@@ -114,14 +117,14 @@ const Projects = () => {
             >
               {/* Image */}
               <div
-                className={`md:col-span-6 w-full  ${
+                className={`md:col-span-6 w-full ${
                   index % 2 !== 0 ? "md:order-2" : "md:order-1"
                 }`}
               >
                 <div
                   className="relative aspect-video rounded-xl overflow-hidden
                 border border-zinc-800 group
-                hover:shadow-xl hover:shadow-cyan-500/30  transition"
+                hover:shadow-xl hover:shadow-cyan-500/30 transition"
                 >
                   <ProjectSlider images={project.imgs} title={project.title} />
                 </div>
@@ -131,7 +134,7 @@ const Projects = () => {
               <div
                 className={`md:col-span-6 flex flex-col justify-center ${
                   index % 2 !== 0
-                    ? "md:order-1  md:text-left"
+                    ? "md:order-1 md:text-left"
                     : "md:order-2 md:text-right"
                 }`}
               >
@@ -164,10 +167,20 @@ const Projects = () => {
                     index % 2 !== 0 ? "justify-start" : "justify-end"
                   }`}
                 >
-                  <a href={project.github} target="blank" className="hover:text-cyan-400">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-cyan-400"
+                  >
                     <Github size={20} />
                   </a>
-                  <a href={project.live} target="blank" className="hover:text-cyan-400">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-cyan-400"
+                  >
                     <ExternalLink size={20} />
                   </a>
                 </div>
@@ -177,9 +190,11 @@ const Projects = () => {
         </div>
 
         {/* Other Projects */}
-        <h3 className="text-2xl font-bold text-center mb-10">
-          Other Noteworthy Projects
-        </h3>
+        {others.length > 0 && (
+          <h3 className="text-2xl font-bold text-center mb-10">
+            Other Noteworthy Projects
+          </h3>
+        )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {others.map((project) => (
@@ -188,23 +203,23 @@ const Projects = () => {
               className="bg-zinc-900 border border-zinc-800 rounded-xl p-6
                          hover:-translate-y-2
                          hover:shadow-xl hover:shadow-cyan-500/20
-                         transition-all duration-300 group"
+                         transition-all duration-300 group flex flex-col"
             >
               <div
                 className="relative aspect-video rounded-xl overflow-hidden
                 border border-zinc-800 group
-                hover:shadow-xl hover:shadow-cyan-500/30 transition"
+                hover:shadow-xl hover:shadow-cyan-500/30 transition mb-6"
               >
                 <ProjectSlider images={project.imgs} title={project.title} />
               </div>
 
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex justify-between items-center mb-6 mt-auto">
                 <Folder size={40} className="text-cyan-400" />
                 <div className="flex gap-4">
-                  <a href={project.github} className="hover:text-cyan-400">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400">
                     <Github size={18} />
                   </a>
-                  <a href={project.live} className="hover:text-cyan-400">
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400">
                     <ExternalLink size={18} />
                   </a>
                 </div>
@@ -214,7 +229,7 @@ const Projects = () => {
                 {project.title}
               </h4>
 
-              <p className="text-zinc-400 text-sm mb-6">
+              <p className="text-zinc-400 text-sm mb-6 grow">
                 {project.description}
               </p>
 
