@@ -8,7 +8,7 @@ import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 const Home = () => {
   return (
-    <div className='min-h-screen bg-[#070a13]'>
+    <div className='min-h-screen w-screen bg-[#070a13]'>
 <Navbar/>
 <main>
     <Hero/>

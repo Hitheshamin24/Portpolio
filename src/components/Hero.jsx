@@ -8,11 +8,11 @@ const Hero = () => {
   return (
     <div
       id="Hero"
-      className="relative min-h-screen text-white flex flex-col justify-center items-center  px-6 overflow-hidden"
+      className="relative min-h-screen text-white flex flex-col justify-center items-center  px-6 overflow-hidden w-full"
     >
       {/* background glow */}
       <div className="absolute  inset-0 bg-linear-to-br from-[#050b14]  via-[#070a13] to-[#0b0f1a] " />
-      <div className="absolute w-120 h-120 bg-[#23ddf6]/20 rounded-full blur-2xl top-1/2 mt-6 -translate-y-1/2" />
+      <div className="absolute  w-75 h-75 md:w-120 md:h-120  bg-[#23ddf6]/20 rounded-full blur-2xl top-1/2 mt-6 -translate-y-1/2" />
 
       <div className="text-[#23ddf6] text-sm  tracking-[0.3em] uppercase mb-2 z-10 ">
         Hello , I'm

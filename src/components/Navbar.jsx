@@ -23,7 +23,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="fixed top-0 left-0 z-10 flex justify-between items-center h-16 w-full bg-[#070a13]/90 backdrop-blur-lg text-white py-3 md:px-28 px-6">
+    <div className="fixed top-0 left-0 right-0 z-10 flex justify-between items-center h-16 bg-[#070a13]/90 backdrop-blur-lg text-white py-3 md:px-28 px-6">
       {/* logo container */}
       <div
         className=" h-full w-10 cursor-pointer"
