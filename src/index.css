@@ -1,6 +1,27 @@
 @import "tailwindcss";
 
-
-html, body ,#root{
-   height:100%
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
+
+body {
+  overflow-x: hidden;
+  
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+body:hover::-webkit-scrollbar-thumb {
+  background: #23ddf6;
+}
+
