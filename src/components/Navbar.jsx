@@ -98,7 +98,14 @@ const Navbar = () => {
               </a>
             );
           })}
-          <button className="bg-linear-to-r from-cyan-400 to-blue-500  rounded-lg text-black shadow-lg shadow-cyan-500/30 px-5 py-1.25 hover:scale-105 transition-transform duration-200 ease-in-out w-full">
+          <button  onClick=
+            {() => {
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+              });
+              setIsOpen(false);
+            }} className="bg-linear-to-r from-cyan-400 to-blue-500  rounded-lg text-black shadow-lg shadow-cyan-500/30 px-5 py-1.25 hover:scale-105 transition-transform duration-200 ease-in-out w-full">
+           
             Lets Talk
           </button>
         </div>
