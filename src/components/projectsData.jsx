@@ -17,10 +17,10 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Paisafy – Personalized Investment Recommendation System",
+    title: "Paisafy - Personalized Investment Recommendation System",
     description:
       "An intelligent investment recommendation system that analyzes user profiles, risk appetite, and financial goals to suggest personalized investment options using data-driven logic.",
-    tech: ["Python", "Machine Learning", "Flask", "Pandas"],
+    tech: ["Python", "React","Node.js","Express", "Flask", "Tailwind CSS"],
     github: "https://github.com/Hitheshamin24/Paisafy.git",
     live: "https://paisafy.vercel.app",
     imgs: [
@@ -31,15 +31,23 @@ export const projects = [
     ],
     featured: true,
   },
-  // {
-  //   title: "Weather Dashboard",
-  //   description: "Real-time weather application using OpenWeather API.",
-  //   tech: ["HTML", "CSS", "JavaScript"],
-  //   github: "#",
-  //   live: "#",
-  //   imgs: [],
-  //   featured: false,
-  // },
+  {
+    title: "Finlytics - Finance Calculator ",
+    description:
+      "React-based personal finance toolkit that provides real-time calculations for financial planning. It features a clean user interface with dedicated tools for evaluating SIPs, EMIs, Lumpsum investments, and Present/Future values.",
+    tech: ["React", "Tailwind CSS"],
+    github: "https://github.com/Hitheshamin24/finlytics.git",
+    live: "https://finlytics-one.vercel.app/",
+    imgs: [
+      "/finlytics/finlytics1.png",
+      "/finlytics/finlytics2.png",
+      "/finlytics/finlytics3.png",
+      "/finlytics/finlytics4.png",
+      "/finlytics/finlytics5.png",
+      "/finlytics/finlytics6.png"
+    ],
+    featured: false,
+  },
   // {
   //   title: "Quiz Application",
   //   description: "Interactive quiz app with timer and score tracking.",
