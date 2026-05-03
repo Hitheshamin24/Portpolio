@@ -2,19 +2,19 @@
 
 A clean, responsive personal portfolio website showcasing projects, skills, and contact information. Built with React + Vite and deployed on Vercel.
 
-🌐 **Live Site:** [hitheshx.vercel.app](https://hitheshx.vercel.app)
+ **Live Site:** [hitheshx.vercel.app](https://hitheshx.vercel.app)
 
 > 💡 **Like this portfolio? Use it as your own template!** See [below](#-use-this-as-your-own-portfolio) for instructions.
 
 ---
 
-## 📸 Preview
+## Preview
 
 [![HitheshX Portfolio](https://hitheshx.vercel.app/screenshot.png)](https://hitheshx.vercel.app)
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Projects** — Highlights of my work with descriptions and links
 - **Skills** — Technologies and tools I work with
@@ -25,7 +25,7 @@ A clean, responsive personal portfolio website showcasing projects, skills, and 
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -35,7 +35,7 @@ A clean, responsive personal portfolio website showcasing projects, skills, and 
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -64,7 +64,7 @@ A clean, responsive personal portfolio website showcasing projects, skills, and 
 
 ---
 
-## 📦 Build & Deployment
+## Build & Deployment
 
 ### Build for production
 
@@ -91,7 +91,7 @@ vercel
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Portpolio/
@@ -109,7 +109,7 @@ Portpolio/
 
 ---
 
-## 🧩 Use This as Your Own Portfolio
+##  Use This as Your Own Portfolio
 
 Want a portfolio just like this? You can use this project as a template in minutes!
 
@@ -139,19 +139,19 @@ Click the **"Use this template"** button at the top of this repo to instantly cr
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 This is a personal portfolio, but if you spot a bug or have a suggestion, feel free to open an issue or submit a pull request!
 
 ---
 
-## 📬 Contact
+##  Contact
 
 - **Website:** [hitheshx.vercel.app](https://hitheshx.vercel.app)
 - **GitHub:** [@Hitheshamin24](https://github.com/Hitheshamin24)
 
 ---
 
-## 📄 License
+##  License
 
 This project is for educational purposes only.
