@@ -10,7 +10,7 @@ A clean, responsive personal portfolio website showcasing projects, skills, and 
 
 ## 📸 Preview
 
-![HitheshX Portfolio](https://hitheshx.vercel.app/og-image.png)
+[![HitheshX Portfolio](https://hitheshx.vercel.app/screenshot.png)](https://hitheshx.vercel.app)
 
 ---
 
