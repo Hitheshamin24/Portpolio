@@ -1,11 +1,11 @@
 export const projects = [
   {
-    title: "DNCR-Dance Studio Management ",
+    title: "Rhythm Flow-Dance Studio Management ",
     description:
       "A complete management system for dance studios to handle student registrations, batch scheduling, fee tracking, instructor management, and attendance. Designed to streamline studio operations and improve administrative efficiency.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     github: "https://github.com/Hitheshamin24/RhythmFlow.git",
-    live: "https://dncr.vercel.app",
+    live: "https://rhflow.vercel.app",
     imgs: [
       "/dncr/dncr1.png",
       "/dncr/dncr2.png",
