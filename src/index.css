@@ -1,42 +1,264 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-html{
-   scroll-behavior: smooth;
-   overflow-x: hidden;
-   max-width: 100%;
+/* ─── Design Tokens ──────────────────────────────── */
+:root {
+  --cyan: #23ddf6;
+  --cyan-dim: rgba(35, 221, 246, 0.15);
+  --cyan-glow: 0 0 30px rgba(35, 221, 246, 0.45);
+  --cyan-glow-lg: 0 0 60px rgba(35, 221, 246, 0.35);
+  --navy-900: #050b14;
+  --navy-800: #070a13;
+  --navy-700: #0b111e;
+  --navy-600: #0f1729;
+  --card-bg: rgba(11, 17, 30, 0.85);
+  --border-dim: rgba(35, 221, 246, 0.12);
+  --border-hover: rgba(35, 221, 246, 0.6);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-   
+/* ─── Base ───────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  width:100%;
-  height:100%
-  /* background-color: #070a13; */
+  width: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--navy-800);
+  color: white;
 }
 
-#root{
-   min-height: 100vh;
+#root {
+  min-height: 100vh;
 }
 
-/* scrollbar width */
-::-webkit-scrollbar {
-  width: 8px;
+/* ─── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(35, 221, 246, 0.5); border-radius: 50px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+/* ─── Keyframe Animations ───────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
 }
 
-/* track */
-::-webkit-scrollbar-track {
-  background: transparent;
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(2deg); }
+  66% { transform: translateY(-4px) rotate(-1deg); }
 }
 
-/* thumb */
-::-webkit-scrollbar-thumb {
-  background: rgba(35, 221, 246, 0.6);
-  border-radius: 50px;
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #23ddf6;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(35, 221, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(35, 221, 246, 0.7); }
+}
+
+@keyframes glow-text-pulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(35, 221, 246, 0.4); }
+  50% { text-shadow: 0 0 30px rgba(35, 221, 246, 0.9), 0 0 60px rgba(35, 221, 246, 0.4); }
+}
+
+@keyframes border-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.5; }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-20px) scale(1); opacity: 0; }
+}
+
+@keyframes bar-fill {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes nav-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes stagger-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ─── Utility Animation Classes ─────────────────── */
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.7s ease forwards; }
+.animate-fade-in { animation: fade-in 0.6s ease forwards; }
+.animate-slide-left { animation: slide-in-left 0.7s ease forwards; }
+.animate-slide-right { animation: slide-in-right 0.7s ease forwards; }
+.animate-slide-down { animation: slide-down 0.3s ease forwards; }
+.animate-shimmer {
+  background: linear-gradient(90deg, #23ddf6 0%, #7c6cff 40%, #4fdcff 60%, #23ddf6 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.animate-glow-pulse { animation: glow-pulse 2.5s ease-in-out infinite; }
+.animate-glow-text { animation: glow-text-pulse 3s ease-in-out infinite; }
+.animate-scroll-bounce { animation: scroll-bounce 1.5s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 10s linear infinite; }
+.animate-blob { animation: blob-move 7s ease-in-out infinite; }
+
+/* ─── Scroll-Triggered Reveal Base State ─────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.reveal-left {
+  transform: translateX(-50px);
+}
+.reveal.reveal-right {
+  transform: translateX(50px);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+.delay-600 { transition-delay: 0.6s; }
+.delay-700 { transition-delay: 0.7s; }
+.delay-800 { transition-delay: 0.8s; }
+
+/* ─── Glassmorphism ──────────────────────────────── */
+.glass {
+  background: rgba(11, 17, 30, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(35, 221, 246, 0.12);
+}
+
+.glass-hover:hover {
+  background: rgba(11, 17, 30, 0.85);
+  border-color: rgba(35, 221, 246, 0.5);
+  box-shadow: 0 0 30px rgba(35, 221, 246, 0.12);
+}
+
+/* ─── Glow Border Card ───────────────────────────── */
+.glow-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, rgba(35,221,246,0), rgba(35,221,246,0.4), rgba(124,108,255,0.3), rgba(35,221,246,0));
+  background-size: 300% 300%;
+  animation: border-rotate 4s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.glow-card:hover::before { opacity: 1; }
+
+/* ─── Shimmer Button ─────────────────────────────── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+.btn-shimmer:hover::after { left: 125%; }
+
+/* ─── Cursor Glow Trail ──────────────────────────── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease;
+}
+
+/* ─── Section Background Grid ───────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(35, 221, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 221, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
 }

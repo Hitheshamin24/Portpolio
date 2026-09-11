@@ -20,7 +20,7 @@ export const projects = [
     title: "Paisafy - Personalized Investment Recommendation System",
     description:
       "An intelligent investment recommendation system that analyzes user profiles, risk appetite, and financial goals to suggest personalized investment options using data-driven logic.",
-    tech: ["Python", "React","Node.js","Express", "Flask", "Tailwind CSS"],
+    tech: ["Python", "React", "Node.js", "Express", "Flask", "Tailwind CSS"],
     github: "https://github.com/Hitheshamin24/Paisafy.git",
     live: "https://paisafy.vercel.app",
     imgs: [
@@ -44,17 +44,38 @@ export const projects = [
       "/finlytics/finlytics3.png",
       "/finlytics/finlytics4.png",
       "/finlytics/finlytics5.png",
-      "/finlytics/finlytics6.png"
+      "/finlytics/finlytics6.png",
     ],
     featured: false,
   },
-  // {
-  //   title: "Quiz Application",
-  //   description: "Interactive quiz app with timer and score tracking.",
-  //   tech: ["React", "Tailwind"],
-  //   github: "#",
-  //   live: "#",
-  //   imgs: [],
-  //   featured: false,
-  // },
+  {
+    title: "Walletly - Expense Manager ",
+    description:
+      "React-based Expense management tool for tracking daily expenses, incomes, setting budgets, and generating reports.",
+    tech: ["React", "Tailwind CSS"],
+    github: "https://github.com/Hitheshamin24/Walletly.git",
+    live: "https://walletlyfinance.vercel.app/",
+    imgs: [
+      "/walletly/walletly1.png",
+      "/walletly/walletly2.png",
+      "/walletly/walletly3.png",
+      "/walletly/walletly4.png",
+      "/walletly/walletly5.png",
+    ],
+    featured: false,
+  },
+  {
+    title: "JobTrackr  - Track Your Job Applications",
+    description:
+      "JobTrackr helps job seekers track their applications, interviews, and job search progress with reminders and analytics.",
+    tech: ["React", "Tailwind CSS"],
+    github: "https://github.com/Hitheshamin24/JobTrackr.git",
+    live: "https://jobtrackr.vercel.app/",
+    imgs: [
+      "/jobtrackr/jobtrackr1.png",
+      "/jobtrackr/jobtrackr2.png",
+      "/jobtrackr/jobtrackr3.png",
+    ],
+    featured: false,
+  },
 ];
