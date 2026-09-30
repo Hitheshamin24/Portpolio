@@ -78,4 +78,19 @@ export const projects = [
     ],
     featured: false,
   },
+  {
+  title: "Niyam - Habit Routine",
+  description:
+    "Full-stack habit tracking application for creating habits, building daily routines, tracking progress, and maintaining consistency.",
+  tech: ["MongoDB", "Express.js", "React", "Node.js"],
+  github: "https://github.com/Hitheshamin24/Niyam.git",
+  live: "https://niyamtrack.vercel.app/",
+  imgs: [
+    "/niyam/niyam1.png",
+    "/niyam/niyam2.png",
+    "/niyam/niyam3.png",
+    "/niyam/niyam4.png",
+  ],
+  featured: true,
+},
 ];
